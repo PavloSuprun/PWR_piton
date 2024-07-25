@@ -18,7 +18,7 @@ management_groups = {
 }
 
 cookies = {
-    'PHPSESSID': 'cookies'
+    'PHPSESSID': 'сюда свої userside кукі'
 }
         
 def process_ip(ip):
@@ -69,6 +69,7 @@ def format_line(line):
     line = re.sub(r'Оновити.?дія\s', '', line)   
     line = line.replace('POWER MONITORING is down', 'на АКБ')
     line = re.sub(r'Interface \d+/\d+\(\): Link down POWER MONITORING', 'на АКБ', line)
+    line = re.sub(r'Interface.*?Link down Power Monitoring', 'на АКБ', line)
     line = line.strip()
     line += f' (від {timestamp})'
     
@@ -110,7 +111,10 @@ with open(output_file_path, 'w', encoding='utf-8') as outfile:
             ip = extract_ip_from_line(line)
             if ip:
                 result = process_ip(ip)
-                new_line = "⚡️" + line + " " + result + "\n"
+                if result.endswith('недоступний'):
+                    new_line = "❗️ " + line + " " + result + "\n"
+                else:
+                    new_line = "⚡️ " + line + " " + result + "\n"
             else:
                 new_line = line + "\n"
             outfile.write(new_line)
@@ -138,7 +142,7 @@ def process_file(output_file_path):
             current_subdivision = line.strip()
             if current_subdivision not in data:
                 data[current_subdivision] = []
-        elif line.startswith("⚡️") and current_subdivision:
+        elif (line.startswith("⚡️") or line.startswith("❗️")) and current_subdivision:
             data[current_subdivision].append(line.strip())
 
     # Sort and group data by management groups
