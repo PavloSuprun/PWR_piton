@@ -1,0 +1,13 @@
+Installation:
+1. Install Python (important checkbox 'Add Python to PATH')
+2. Install VS Code
+3. Download script file and open it using VS Code
+4. In VS Code install essential python extensions (Python, Pylance, PythonDebugger)
+5. In VS code press Ctrl + ` to open terminal and write 'pip install requests' or if error 'py -m pip install requests' or reopen VS Code itself
+6. In same directory as script file create 'input.txt' and 'output.txt'
+7. Copy and paste your cookies from UserSide (F12 - Application - PHPSESSID Value)
+
+Usage:
+8. Copy and paste lines from PWR tab to 'input.txt'
+9. Press 'Run Python Fine' button on top right corner
+10. See 'output.txt'

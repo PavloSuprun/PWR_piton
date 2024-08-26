@@ -1,8 +1,0 @@
-1. Install Python
-2. Install VS Code
-3. Download script file and open it using VS Code
-4. In VS Code install essential python extensions (Python, Pylance, PythonDebugger)
-5. In VS code press Ctrl + ` to open terminal and write 'pip install requests' or if error 'py -m pip install requests'
-6. In same directory as script file create 'input.txt' and 'output.txt'
-7. Copy and paste your cookies from UserSide (F12 - Application - PHPSESSID Value)
-Ready for use
